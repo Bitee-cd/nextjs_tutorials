@@ -16,20 +16,31 @@ const PostId = ({post}) => {
 export default PostId
 
 export async function getStaticPaths(){
-    const response = await fetch(post_api)
-    const data = await response.json()
+    // const response = await fetch(post_api)
+    // const data = await response.json()
 
-    const paths = data.map(post =>{
-        return{
-            params:{
-                postId:`${post.id}`
-            },
-        }
-    })
+    // const paths = data.map(post =>{
+    //     return{
+    //         params:{
+    //             postId:`${post.id}`
+    //         },
+    //     }
+    // })
+
 
     return{
-        paths,
-        fallback:false,
+        paths:[
+            {
+                params:{postId:'1'}
+            },
+            {
+                params:{postId:'2'}
+            },
+            {
+                params:{postId:'3'}
+            },
+        ],
+        fallback:'blocking',
     }
 }
 
